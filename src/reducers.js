@@ -1,14 +1,21 @@
-import {ADD_TODO, DELETE, INPUT_CHANGE, TO_BE_DELETED} from "./actionTypes";
+import {ADD_TODO, DELETE, INPUT_CHANGE, TO_BE_DELETED, USER_FETCH_SUCCESS} from "./actionTypes";
 
 const initialState = {
   inputValue: '第一个代办事项',
   todos: [],
+  users: [],
 };
 
 let id = 0;
 
 export default function counter(state = initialState, action) {
   switch (action.type) {
+    case USER_FETCH_SUCCESS: {
+      return {
+        ...state,
+        users: action.payload,
+      };
+    }
     case INPUT_CHANGE: {
       return {
         ...state,

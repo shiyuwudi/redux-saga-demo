@@ -9,6 +9,8 @@ const Counter = (props) => (
       />
       {' '}
       <button onClick={props.addTodo}>添加</button>
+      {' '}
+      <button onClick={props.mock}>获取GitLab用户</button>
     </div>
     <br />
 
