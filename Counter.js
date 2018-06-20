@@ -1,25 +1,31 @@
-/*eslint-disable no-unused-vars */
-import React, { Component, PropTypes } from 'react'
+import React from 'react'
 
-const Counter = ({ value, onIncrement, onDecrement }) =>
-      <div>
-        <button onClick={onIncrement}>
-          Increment
-        </button>
-        {' '}
-        <button onClick={onDecrement}>
-          Decrement
-        </button>
-        <hr />
-        <div>
-          Clicked: {value} times
-        </div>
-      </div>
+const Counter = (props) => (
+  <div>
+    <div>
+      <input
+        value={props.inputValue}
+        onChange={props.onInputValueChange}
+      />
+      {' '}
+      <button onClick={props.addTodo}>添加</button>
+    </div>
+    <br />
 
-Counter.propTypes = {
-  value: PropTypes.number.isRequired,
-  onIncrement: PropTypes.func.isRequired,
-  onDecrement: PropTypes.func.isRequired
-}
+    <ul>
+      {props.todos.map((todo) => (
+        <li key={todo.id}>
+          {todo.title}
+          {' '}
+          <a
+            href="javascript:void(0)"
+            style={{ color: 'red' }}
+            onClick={() => props.delete(todo.id)}
+          >{todo.sec}s后删除</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 
 export default Counter
